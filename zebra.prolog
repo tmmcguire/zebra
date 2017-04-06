@@ -1,4 +1,21 @@
-% See: https://en.wikipedia.org/wiki/Zebra_Puzzle, http://rosettacode.org/wiki/Zebra_puzzle
+%%% Zebra puzzle
+%%%
+%%% Copyright 2017 Tommy M. McGuire
+%%%
+%%%   This program is free software: you can redistribute it and/or modify
+%%%   it under the terms of the GNU General Public License as published by
+%%%   the Free Software Foundation, either version 3 of the License, or
+%%%   (at your option) any later version.
+%%%
+%%%   This program is distributed in the hope that it will be useful,
+%%%   but WITHOUT ANY WARRANTY; without even the implied warranty of
+%%%   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%%%   GNU General Public License for more details.
+%%%
+%%%   You should have received a copy of the GNU General Public License
+%%%   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+%%% See: https://en.wikipedia.org/wiki/Zebra_Puzzle, http://rosettacode.org/wiki/Zebra_puzzle
 
 %%% A is the first house on the street.
 first(A,[A|_]).
@@ -6,10 +23,10 @@ first(A,[A|_]).
 %%% A is the middle house on the street.
 middle(A,S) :- append(L, [A|R], S), length(L,N), length(R,N).
 
-% A is to the right of B on the street.
+%%% A is to the right of B on the street.
 right_of(A,B,S) :- append(_, [B,A|_], S).
 
-% A and B are next to each other.
+%%% A and B are next to each other.
 next_to(A,B,S) :- right_of(A,B,S); right_of(B,A,S).
 
 nationality(O,H) :- H = h(O,_,_,_,_).
@@ -18,7 +35,7 @@ pet(P,H) :- H = h(_,_,P,_,_).
 drinks(D,H) :- H = h(_,_,_,D,_).
 smokes(S,H) :- H = h(_,_,_,_,S).
 
-% HS: list of h(nation, color, pet, drink, smoke).
+%%% HS: list of h(nation, color, pet, drink, smoke).
 rules(HS) :-
     %% 1.  There are five houses.
     length(HS, 5),
